@@ -1,0 +1,239 @@
+#include<iostream>
+ using namespace std;
+ 
+ class binary{
+ 
+        int data;
+   
+        binary *Right;
+        binary *Left;
+        binary *root;
+	binary *curr;
+	binary*parent;
+	binary*parent1;
+	binary*found;
+
+        public:
+                binary()
+                {
+			root=NULL; 		    
+                }
+
+                void inorder1();
+            	void inorder(binary*);
+		void Insert(int);
+		void Search(int);
+		void Level_Order();
+		void Deletion();
+
+ };
+		
+void binary::Insert( int key)
+{
+    binary *newnode=new binary();
+	newnode->data =key  ;
+	newnode->Left=NULL;
+	newnode->Right=NULL;	
+	
+
+	binary *data;
+        
+
+
+        if(root==NULL)
+        	root=newnode;
+        else{
+		curr=root;
+		while(curr !=NULL)
+		{
+		        if(curr ->data <key)
+		        {
+		                parent=curr;
+		                curr=curr->Right;
+		        }
+		        else
+		        {
+		                parent=curr;
+		                curr=curr->Left;
+		                
+		        }
+		}
+		if(parent ->data >key)
+		{
+		        parent->Left=newnode;
+		        
+		}
+		else
+		{
+		        parent->Right=newnode;
+		}
+        }
+}
+void binary::inorder(binary*curr)
+{
+	if (curr!=NULL)
+	{
+		
+		inorder(curr->Left);
+		cout<<curr->data<<"\t";
+		inorder(curr->Right);
+	}
+}
+void binary::inorder1()
+{
+	inorder(root);
+}
+
+void binary::Search(int t)
+{
+	curr=root;	
+	while(curr!=NULL)
+	{
+		if(curr->data==t)
+		{		
+			cout<<"Element Found";
+			found=curr;
+			break;
+		}
+		else
+		{
+			if(curr->data >t)
+			{		
+				parent1=curr;	
+				curr=curr->Left;
+			}
+			else
+			{
+				parent1=curr;
+				curr=curr->Right;
+			}
+		}
+		
+	}
+	
+	if(curr==NULL)
+	cout<<"\nElement not Found";
+}
+                  
+void binary::Level_Order()
+{
+   binary *queue[20];
+   binary *curr=root;
+   int rear=0,front=0;
+   int qsize=0;
+   queue[rear]=curr;
+   qsize++;
+   while(qsize>0)
+   {
+      curr=queue[front++];
+      cout<<curr->data<<"\t";
+      qsize--;
+      if(curr->Left!=NULL)
+        queue[++rear]=curr->Left;
+     if(curr->Right!=NULL)
+        queue[++rear]=curr->Right;
+     if(qsize==0)
+       { 
+        qsize=(rear-front)+1;
+        cout<<"\n";
+        }
+    }
+}  
+
+void binary::Deletion()
+{
+	int del;
+	cout<<"Enter the element You want to delete";
+	cin>>del;
+	Search(del);
+	curr=found;
+	parent=parent1;	
+	if(curr->Left==NULL && curr->Right==NULL)
+       //identification of leaf node 
+	{
+		if(parent->Left==curr)
+			parent->Left=NULL;
+		else
+			parent->Right=NULL;
+		delete(curr);
+	}
+	else if(curr->Left !=NULL && curr->Right==NULL)
+	{
+		if(curr=parent->Right)
+			parent->Right=curr->Left;
+		else 
+			parent->Left=curr->Left;
+		delete(curr);
+	}
+	else if(curr->Right !=NULL && curr->Left ==NULL)
+	{
+		if(curr=parent->Left)
+			parent->Left=curr->Right;
+		else
+			parent->Right=curr->Right;
+		delete(curr);
+	}
+	else if(curr->Left !=NULL && curr->Right !=NULL)
+	{
+		
+		binary* temp;
+		parent=curr;
+		temp=curr->Left;
+		while(temp->Right!=NULL)
+		{
+			parent=temp;
+			temp=temp->Right;
+		}
+		curr->data=temp->data;
+		if(parent==curr)
+		{
+			parent->Left= temp->Left;
+		}
+		else
+			parent->Right= temp->Left;
+		delete(temp);
+	}
+}
+
+int main()
+{
+        int key, num, t, ch, yn;
+     
+
+   
+        cout<<"Insert total numbers to be inserted: ";
+        cin>>num;
+      binary obj;
+        for(int i=0; i<num; i++)
+        {
+                cout<<"Insert The Element: ";
+                cin>>key;
+                obj.Insert(key);
+               
+        }
+do{
+	cout<<"1:Dispaly Inorder"<<endl;
+	cout<<"2:Search"<<endl;
+	cout<<"3: Level Order Traversal"<<endl;
+	cout<<"4: Deletion"<<endl;;
+	cin>>ch;
+        switch(ch)
+	{
+		case 1:obj.inorder1();
+			break;
+		case 2:cout<<"\nInsert the element to be Searched";
+			cin>>t;	
+			obj.Search(t);
+			break;
+		case 3:obj.Level_Order();
+			break;	
+		case 4: //cout<<"Enter the element You want to delete";
+			//cin>>del;
+			obj.Deletion();
+			break;
+	}
+	
+	cout<<"\nDo you want to continue??"<<"\t"<<"1:Yes"<<"\t"<<"2:No";
+	cin>>yn;
+ 	}while(yn!=2);
+}	

@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+class Complex{
+    Scanner sc = new Scanner(System.in);
+    float real1,real2,img1,img2,imgA,realA,imgs,reals,imgm,realm,imgd,reald;
+
+    Complex(){
+        System.out.println("Enter First number");
+        System.out.println("REAL PART :");
+        real1=sc.nextFloat();
+        System.out.println("IMAGINARY  PART :");
+        img1=sc.nextFloat();
+        System.out.println("Enter second number");
+        System.out.println("REAL PART :");
+        real2=sc.nextFloat();
+        System.out.println("IMAGINARY  PART :");
+        img2=sc.nextFloat();
+    }
+
+
+public void add()
+{
+    realA=real1+real2;
+    imgA=img1+img2;
+    System.out.println("ADDTION IS"+realA+"+"+imgA+"i/n");
+}
+
+public void sub()
+{
+    reals=real1-real2;
+    imgs=img1-img2;
+    System.out.println("DIFFERENCE IS"+reals+"+"+imgs+"i/n");
+}
+
+public void mul()
+{
+    realm=real1*real2;
+    imgm=img1*img2;
+    System.out.println("PRODUCT IS"+realm+"+"+imgm+"i/n");
+}
+
+
+public void div()
+{
+    reald=(real1*real2)/(img1*img2)+(real1*real2);
+    imgd=(img1*img2)/(img1*img2)+(real1*real2);
+    System.out.println("division IS"+reald+"+"+imgd+"i/n");
+}
+
+public static void main(String args[])
+{
+    int ip;
+    Complex r = new Complex();
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Select \n 1.add \n 2.sub \n 3.mul \n 4.mul");
+    ip=sc.nextInt();
+    switch(ip){
+    case 1:
+    r.add();
+    case 2:
+    r.sub();
+    case 3:
+    r.mul();
+    case 4:
+    r.div();
+}
+}
+}

@@ -1,0 +1,136 @@
+Inheritance_5.txt
+import java.util.Scanner;
+
+class Data
+{
+    Scanner in=new Scanner(System.in);
+    String name,add,mail;
+    int id;
+    long mob;
+    void getdata()
+    {
+        System.out.println("Enter the name of Employee: ");
+        name=in.nextLine();
+        System.out.println("\nEnter the address of Employee: ");
+        add=in.nextLine();
+        System.out.println("\nEnter the Email of Employee: ");
+        mail=in.nextLine();
+        System.out.println("\nEnter the ID of Employee: ");
+        id=in.nextInt();
+        System.out.println("\nEnter the Mobile Number of Employee: ");
+        mob=in.nextLong();
+    }
+    void DisplayData(){
+        System.out.println("\nThe Data of Employee is as Follows: ");
+        System.out.println("\nName>>>>>>"+name);
+        System.out.println("\nAddress>>>>>>"+add);
+        System.out.println("\nEmail>>>>>>"+mail);
+        System.out.println("\nID>>>>>>"+id);
+        System.out.println("\nMobile Number>>>>>"+mob);
+    }
+
+    
+}
+
+class Programmer extends Data{
+    float salary;
+
+    void Display(){
+        System.out.println("Enter the Salary of Programmer: ");
+        salary = in.nextFloat();
+        System.out.println("DA>>>>>"+0.97*salary);
+        System.out.println("HRA>>>>>"+0.1*salary);
+        System.out.println("PF>>>>>>>>"+0.12*salary);
+        System.out.println("Staff Club Fund>>>>>>"+0.001*salary);
+    }
+}
+class AssistantProgrammer extends Data
+{
+    float salary;
+
+    void Display(){
+        System.out.println("Enter the Salary of AssistantProgrammer: ");
+        salary = in.nextFloat();
+        System.out.println("DA>>>>>"+0.97*salary);
+        System.out.println("HRA>>>>>"+0.1*salary);
+        System.out.println("PF>>>>>>>>"+0.12*salary);
+        System.out.println("Staff Club Fund>>>>>>"+0.001*salary);
+    }
+}
+class AssociateProfessor extends Data
+{
+    float salary;
+
+    void Display(){
+        System.out.println("Enter the Salary of AssociateProfessor: ");
+        salary = in.nextFloat();
+        System.out.println("DA>>>>>"+0.97*salary);
+        System.out.println("HRA>>>>>"+0.1*salary);
+        System.out.println("PF>>>>>>>>"+0.12*salary);
+        System.out.println("Staff Club Fund>>>>>>"+0.001*salary);
+    }
+}
+class Professor extends Data
+{
+    float salary;
+
+    void Display(){
+        System.out.println("Enter the Salary of Professor: ");
+        salary = in.nextFloat();
+        System.out.println("DA>>>>>"+0.97*salary);
+        System.out.println("HRA>>>>>"+0.1*salary);
+        System.out.println("PF>>>>>>>>"+0.12*salary);
+        System.out.println("Staff Club Fund>>>>>>"+0.001*salary);
+    }
+}
+
+public class Main
+{
+    public static void main(String[]args){
+        Programmer p1=new Programmer();
+        AssistantProgrammer p2=new AssistantProgrammer();
+        AssociateProfessor p3 =new AssociateProfessor();
+        Professor p4 = new Professor();
+
+        int ch;
+        Scanner in = new Scanner(System.in);
+        do{
+            System.out.println("\n1.Programmer\n2.AssistantProgrammer\n3.AssociateProfessor\n4.Professor\n5.close");
+
+            ch=in.nextInt();
+
+            switch(ch){
+
+                case 1:
+                    p1.getdata();
+                    p1.Display();
+                    p1.DisplayData();
+                    break;
+
+                case 2:
+                    p1.getdata();
+                    p1.Display();
+                    p1.DisplayData();
+                    break;
+
+                case 3:
+                    p1.getdata();
+                    p1.Display();
+                    p1.DisplayData();
+                    break;
+
+                case 4:
+                    p1.getdata();
+                    p1.Display();
+                    p1.DisplayData();
+                    break;
+
+                default:
+                    System.out.println("Invalid Input");
+                    break;
+            }
+
+        }while(ch>0 && ch<6);
+
+    }
+}

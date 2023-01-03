@@ -1,0 +1,84 @@
+import java.util.Scanner;
+public class Bag {
+    static Scanner sc=new Scanner(System.in);
+    String color;
+    float weight;
+    static float total_wt;
+    int total_obj;
+   Bag()
+   {
+        weight =1;
+        color="Blue";
+        System.out.println("Weight of object is:"+weight);
+        System.out.println("Color of object is:"+color);
+   } 
+   Bag(String color)
+   {
+        weight=1;
+        System.out.println("Weight of object is:"+weight);
+        System.out.println("Color of object is:"+color);
+   }
+   Bag(float weight)
+   {
+        color="Blue";
+        System.out.println("Weight of object is:"+weight);
+        System.out.println("Color of object is:"+color);
+   }
+   Bag(float weight,String color)
+   {
+        System.out.println("Weight of object is:"+weight);
+        System.out.println("Color of object is:"+color);
+   }
+   void Add(float bag_wt[],String bag_col[],Bag obj)
+   {
+        total_obj++;
+        bag_wt[total_obj]=obj.weight;
+        bag_col[total_obj]=obj.color;
+   }
+   public static void main(String args[])
+   {
+        int n,ans;
+        System.out.println("Enter the No. of objects you want to add:");
+        n=sc.nextInt();
+        float bag_wt[]=new float[n];
+        String bag_col[]=new String[n];
+        int choice;
+        do
+        {
+            System.out.println("\n1)Default Obj Add\n2)Add object with color\n3)Add object with Weight\n4)Add object with color and Weight:");
+            choice=sc.nextInt();
+            switch(choice)
+            {
+               case 1:
+               System.out.println("1)Default Object Adding:\n");
+               Bag obj1=new Bag();
+               break;
+
+               case 2:
+               System.out.println("Adding Object with Color:\n");
+               System.out.println("Enter the Object color:");
+               String color=sc.nextLine();
+               Bag obj2=new Bag(color);
+               break;
+
+               case 3:
+               System.out.println("Adding Object with Weight\n");
+               System.out.println("Enter the Object Weight:");
+               float weight=sc.nextInt();
+               Bag obj3=new Bag(weight);
+               break;
+
+               case 4:
+               System.out.println("3)Adding Object with Color and Weight:");
+               System.out.println("Enter the Object Weight:");
+               float weight1=sc.nextInt();
+               System.out.println("Enter the Object color:");
+               String color1=sc.next();
+               Bag obj4=new Bag(weight1,color1);
+               break;
+            }
+            System.out.println("Do you want to Continue?\tIf Yes(type 1)\tIf No(type 2)");
+            ans=sc.nextInt();
+        }while(ans==1);
+   }
+}

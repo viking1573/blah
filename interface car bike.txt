@@ -1,0 +1,82 @@
+interface functions{
+	void applybreaks();
+	void speedup();
+	void gear();
+}
+
+class Bike implements functions{
+	public void speedup() {
+		System.out.println("\nThe Speed of Bike is 50 km/h ");
+	}
+	public void gear()
+	{
+		System.out.println("\nThere are 4 Gears in Bike");
+	}
+	public void applybreaks()
+	{
+		System.out.println("\nTwo Types of Breaks ");
+	}
+}
+
+class Bicycle implements functions
+{
+	public void speedup()
+	{
+		System.out.println("\nThe Speed of Bicycle is 20 km/h");
+	}
+	public void gear()
+	{
+		System.out.println("\nThere are no Gears in Bicycle ");
+	}
+	public void applybreaks()
+	{
+		System.out.println("\nonly One Type of Break  ");
+	}
+}
+
+class Car implements functions 
+{
+	public void speedup()
+	{
+		System.out.println("\nThe Speed of Car is 100 km/h ");
+	}
+	public void gear()
+	{
+		System.out.println("\nThere are 5 Gears in a Car");
+	}
+	public void applybreaks()
+	{
+	    System.out.println("\nTwo Types of Breaks ");
+	}
+}
+
+class Interface 
+{
+    public static void main(String[]args)
+    {
+        System.out.println("The Information Provided is\n ");
+        System.out.println("\nBike :- ");
+        Bike sc = new Bike();
+        sc.speedup();
+        sc.gear();
+        sc.applybreaks();
+        
+        
+        System.out.println("\nBicycle :- ");
+        Bicycle bi = new Bicycle();
+        bi.speedup();
+        bi.gear();
+        bi.applybreaks();
+        
+        
+        System.out.println("\nCar :- ");
+        Car c = new Car();
+        c.speedup();
+        c.gear();
+        c.applybreaks();
+        
+        
+        
+        
+    }
+}

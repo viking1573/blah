@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args) {
+		int num1 , num2;
+		int ans;
+		Scanner inp = new Scanner(System.in);
+		do{
+		    try {
+			System.out.println("enter a number: ");
+			num1 = inp.nextInt();
+			System.out.println("enter another number: ");
+			num2 = inp.nextInt();
+			System.out.println("the result of division is: " + (num1/num2));
+		}
+		catch(ArithmeticException arit) {
+			System.out.println("you have an arithmatic exception " + arit);
+		}
+		catch(NumberFormatException nfe) {
+			System.out.println("You have a number format exception: " + nfe);
+		}
+		catch(Exception e) {
+			System.out.println("You have a exception: " + e);
+		}
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("1.YES 2.NO");
+		ans=sc.nextInt();
+		}
+		
+		
+		while(ans==1);
+		
+		
+	}
+}

@@ -1,0 +1,61 @@
+
+#include<iostream>
+
+using namespace std;
+
+class Measure {
+    public:
+    double m,cm;
+
+};
+
+class Concept{
+    public:
+     double feet,inch;
+
+     friend void add(Measure,Concept);
+};
+
+void add(Measure measure,Concept concept){
+
+    double d1,d2;
+    cout<<"\nEnter the Distance in Meter : ";
+    cin>>measure.m;
+    cout<<"\nEnter the Distance in Centimeter : ";
+    cin>>measure.cm;
+    cout<<"\nEnter the Distance in Feet : ";
+    cin>>concept.feet;
+    cout<<"\nEnter the Distance in Inch : ";
+    cin>>concept.inch;
+
+    d1 = measure.m+(concept.feet)/3.28;
+    d2=measure.cm+(concept.inch)*2.54;
+
+    cout<<"\nMeter+Feet:"<<d1<<"Meter";
+    cout<<"\nCentimeter+Inch"<<d2<<"Centimeter";
+}
+
+void sub(Measure measure,Concept concept){
+    double d1,d2;
+    cout<<"\nEnter the Distance in Meter : ";
+    cin>>measure.m;
+    cout<<"\nEnter the Distance in Centimeter : ";
+    cin>>measure.cm;
+    cout<<"\nEnter the Distance in Feet : ";
+    cin>>concept.feet;
+    cout<<"\nEnter the Distance in Inch : ";
+    cin>>concept.inch;
+
+    d1 = measure.m-(concept.feet)/3.28;
+    d2=measure.cm-(concept.inch)*2.54;
+    cout<<"\nMeter-Feet:"<<d1<<"Meter";
+    cout<<"\nCentimeter-Inch"<<d2<<"Centimeter";
+}
+
+int main()
+{
+    Measure measure;
+    Concept concept;
+    add(measure,concept);
+    sub(measure,concept);
+}

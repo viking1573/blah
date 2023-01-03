@@ -1,0 +1,102 @@
+Generic_9.txt
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Main <T>
+{
+    Scanner sc = new Scanner(System.in);
+
+    ArrayList<Integer> a1 = new ArrayList<Integer>();
+    ArrayList<String>  a2 = new ArrayList<String>();
+    ArrayList<Integer> odd = new ArrayList<Integer>();
+    ArrayList<Integer> even = new ArrayList<Integer>();
+    ArrayList<Integer> prime = new ArrayList<Integer>();
+    ArrayList<String>  palindrome = new ArrayList<String>();
+
+    int x, oddCount=0, evenCount=0, primeCount=0, palindromeCount=0;
+    
+    void input()
+    {
+        int a;
+        String b;
+        System.out.println("Enter the SIZE of Array ");
+        x=sc.nextInt();
+        for(int i=0;i<x;i++)
+        {
+            System.out.println("Enter The Element "+ (i+1) +" > > > ");
+            try 
+            {
+                a=sc.nextInt();
+                a1.add(a);
+            }
+            catch(RuntimeException e) 
+            {
+                b=sc.next();
+                a2.add(b);
+            }
+        }
+    }
+
+    void counter()
+    {
+        Iterator<Integer> it1 = a1.iterator();
+        Iterator<String>  it2 = a2.iterator();
+        while(it1.hasNext())
+        {
+            int a=it1.next();
+            if(a%2==0)
+            {
+                even.add(a);
+                evenCount++;
+            }
+            else
+            {
+                odd.add(a);
+                oddCount++;
+            }
+            int flag=0;
+            for(int i=2;i<a;i++) {
+                
+                if(a%i==0) {
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0) {
+                prime.add(a);
+                primeCount++;
+            }
+        } 
+        while(it2.hasNext())
+        {
+            String s=it2.next();
+            boolean ans = false;
+            String rev="";
+            for(int i=s.length()-1; i>=0; i--)
+            {
+                rev = rev + s.charAt(i);
+            }
+            if(s.equals(rev)) 
+            {
+                ans = true;
+            }
+            if(ans == true)
+            {
+                palindrome.add(s);
+                palindromeCount++;
+            }
+        }   
+        System.out.println("Even Count > " + evenCount);
+        System.out.println("Odd Count > " + oddCount);
+        System.out.println("Prime Count > " + primeCount);
+        System.out.println("Palinderome Count > " + palindromeCount);
+    }
+
+    public static void main(String[] args)
+    {
+        Main obj = new Main();
+        obj.input();
+        obj.counter();
+    }
+}
